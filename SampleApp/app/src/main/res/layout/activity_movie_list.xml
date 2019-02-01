@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.android.architecture.redprints.sampleapp.presentation.movielist.MovieListViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.movielist.MovieListActivity">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            app:layout_constraintEnd_toStartOf="@id/button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylcerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button"
+            bind:items="@{vm.getMovieInfoList}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
